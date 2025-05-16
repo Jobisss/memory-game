@@ -101,6 +101,8 @@ function verify() {
   } else {
     errorSound.play()
     document.body.classList.add("shake");
+    last.dataset.oppened = "false"
+    penult.dataset.oppened = "false"
 
     setTimeout(() => {
       document.body.classList.remove("shake");
@@ -123,12 +125,13 @@ function createCard(src) {
   card.dataset.realSrc = src;
   card.src = "images/verso.png";
   card.classList.add("card-container");
+  card.dataset.oppened = "false"
   card.addEventListener("click", () => {
     if (!card.src.includes("images/verso.png") || selectedCards.length == 2) {
       return;
     }
     card.classList.add("clicked");
-
+    card.dataset.oppened = "true"
     selectedCards.push(card);
     setTimeout(() => {
       card.src = card.dataset.realSrc;
